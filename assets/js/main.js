@@ -72,25 +72,48 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+const menuToggle = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+
+if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", () => {
+        menuToggle.classList.toggle("active");
+        navLinks.classList.toggle("active");
+    });
+}
+
 // ==========================================================================
 //  CARROSSEL AUTOMÁTICO DO HERO
 // ==========================================================================
-const slides = document.querySelectorAll('.carousel-slide');
-let currentSlide = 0;
-const slideInterval = 5000; // Tempo por foto no carrossel (em ms)
 
-function nextSlide() {
-    // Remove a classe ativa do slide atual
+document.addEventListener('DOMContentLoaded', () => {
+
+    const slides = document.querySelectorAll('.carousel-slide');
+    let currentSlide = 0;
+    const slideInterval = 5000;
+
+    let interval;
+
+    function nextSlide() {
+    if (slides.length === 0) return;
+
     slides[currentSlide].classList.remove('active');
-    
-    // Avança para o próximo slide e volta pro zero quando chega ao fim
+
     currentSlide = (currentSlide + 1) % slides.length;
-    
-    // Adiciona a classe ativa no novo slide
+
     slides[currentSlide].classList.add('active');
 }
 
-// Inicia o temporizador automático do carrossel
-if(slides.length > 0) {
-    setInterval(nextSlide, slideInterval);
+
+    if (slides.length > 0) {
+        setInterval(nextSlide, slideInterval);
 }
+const carousel = document.querySelector('.hero-carousel');
+
+if (carousel && slides.length > 0) {
+        startCarousel();
+
+        carousel.addEventListener('mouseenter', stopCarousel);
+        carousel.addEventListener('mouseleave', startCarousel);
+    }
+});

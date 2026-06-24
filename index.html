@@ -12,106 +12,73 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body> 
-    <script src="assets/js/main.js" defer></script>
-
-    <header class="main-header">
-    <nav class="navbar">
+    
+    <div class="hero-background">
         
-        <a href="#" class="nav-logo">
-            <div class="logo-icon"></div>
-            <div class="logo-text">
-                <span class="brand-name">Neurosynapsis</span>
-                <span class="brand-sub">Psicologia & Desenvolvimento</span>
-            </div>
-        </a>
-
-        <button class="menu-toggle" aria-label="Abrir menu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-        </button>
-
-        <ul class="nav-links">
-            <li><a href="#" class="nav-item active">Inicio</a></li>
-            <li><a href="#" class="nav-item">Sobre Nós</a></li>
-            <li><a href="#" class="nav-item">Especialidades</a></li>
-            <li><a href="#" class="nav-item">Nossa Equipe</a></li>
-            <li><a href="#" class="nav-item">Blog</a></li>
-            <li><a href="#" class="nav-item">Contato</a></li>
-            <li><a href="#" class="nav-item">Onde Estamos</a></li>
-        </ul>
-
-        <div class="nav-actions">
-            <a href="#" class="btn-appointment">Agende um horário</a>
-        </div>
-
-    </nav>
-</header>
-
-<!-- SEÇÃO HERO PRINCIPAL -->
-<section class="hero-section">
-    <!-- O Molde de Corte Invisível para a FOTO -->
-    <svg width="0" height="0" style="position: absolute;">
-        <defs>
-            <clipPath id="cloud-clip-inner" clipPathUnits="objectBoundingBox">
-                <path d="M 0.25,0.04 
-                         C 0.42, -0.01, 0.58, 0.08, 0.68, 0.04 
-                         C 0.81, -0.01, 0.95, 0.06, 0.96, 0.23 
-                         C 0.99, 0.44, 0.94, 0.66, 0.92, 0.82 
-                         C 0.90, 0.94, 0.72, 0.98, 0.52, 0.94 
-                         C 0.32, 0.98, 0.13, 0.95, 0.06, 0.80 
-                         C -0.01, 0.62, 0.03, 0.36, 0.05, 0.20 
-                         C 0.07, 0.07, 0.13, 0.08, 0.25, 0.04 Z" />
-            </clipPath>
-        </defs>
-    </svg>
-
-    <div class="hero-container">
-        
-        <!-- Moldura Orgânica -->
-        <div class="organic-frame-container">
-            <div class="organic-frame">
-                
-                <!--  Linhas da moldura no lugar sem flutuar -->
-                <svg class="cloud-border-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <path d="M 25,4 
-                             C 42,-1, 58,8, 68,4 
-                             C 81,-1, 95,6, 96,23 
-                             C 99,44, 94,66, 92,82 
-                             C 90,94, 72,98, 52,94 
-                             C 32,98, 13,95, 6,80 
-                             C -1,62, 3,36, 5,20 
-                             C 7,7, 13,8, 25,4 Z" 
-                          fill="none" 
-                          stroke="#A9EAD2" 
-                          stroke-width="0.8" />
-                </svg>
-
-                <!-- Máscara interna que corta o carrossel de fotos -->
-                <div class="carousel-mask">
-                    <div class="hero-carousel">
-                        <!-- Slide 1 -->
-                        <div class="carousel-slide active" style="background-image: url('https://picsum.photos/1200/600?random=1');"></div>
-                        <!-- Slide 2 -->
-                        <div class="carousel-slide" style="background-image: url('https://picsum.photos/1200/600?random=2');"></div>
-                        <!-- Slide 3 -->
-                        <div class="carousel-slide" style="background-image: url('https://picsum.photos/1200/600?random=3');"></div>
+        <header class="main-header">
+            <nav class="navbar">
+                <a href="#" class="nav-logo">
+                    <div class="logo-icon"></div>
+                    <div class="logo-text">
+                        <span class="brand-name">Neurosynapsis</span>
+                        <span class="brand-sub">Psicologia & Desenvolvimento</span>
                     </div>
+                </a>
+
+                <button class="menu-toggle" aria-label="Abrir menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+
+                <ul class="nav-links">
+                    <li><a href="#" class="nav-item active">Inicio</a></li>
+                    <li><a href="#" class="nav-item">Sobre Nós</a></li>
+                    <li><a href="#" class="nav-item">Especialidades</a></li>
+                    <li><a href="#" class="nav-item">Nossa Equipe</a></li>
+                    <li><a href="#" class="nav-item">Blog</a></li>
+                    <li><a href="#" class="nav-item">Contato</a></li>
+                    <li><a href="#" class="nav-item">Onde Estamos</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="#" class="btn-appointment">Agende um horário</a>
                 </div>
+            </nav>
+        </header>
 
+        <section class="hero-section">
+         
+
+            <div class="hero-container">
+                <div class="organic-frame-container">
+    <div class="organic-frame">
+        
+        <!-- CORRIGIDO: Removida a barra inicial '/' para alinhar com suas pastas locais -->
+        <img src="assets/img/mascarahero2.svg" class="cloud-border-paint" alt="Borda Pincel">
+
+        <div class="carousel-mask">
+            <div class="hero-carousel">
+                <!-- CORRIGIDO: Removida a div duplicada que estava aqui dentro -->
+                <div class="carousel-slide active">
+                    <img src="assets/img/foto1.jpg" alt="teste">
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/img/ceuroxo.jpg" alt="Slide 3" />
+                </div>
             </div>
-        </div>
-
-        <!-- Botões de Ação Centralizados -->
-        <div class="hero-actions">
-            <a href="#" class="btn-hero-secondary">Nossos Serviços</a>
-            <a href="#" class="btn-hero-primary">Conheça Nossa Equipe</a>
         </div>
 
     </div>
-</section>
+</div>
 
+                <div class="hero-actions">
+                    <a href="#" class="btn-hero-secondary">Nossos Serviços</a>
+                    <a href="#" class="btn-hero-primary">Conheça Nossa Equipe</a>
+                </div>
+            </div>
+        </section>
+
+    </div> <script src="assets/js/main.js" defer></script>
 </body>
-
-
 </html>

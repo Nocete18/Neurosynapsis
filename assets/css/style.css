@@ -1,28 +1,60 @@
-*, *::before, *::after {
+/* ==========================================================================
+    DESIGN TOKENS
+   ========================================================================== */
+
+:root {
+  /* Cores */
+    --color-bg: #fdfbf4;
+    --color-white: #ffffff;
+    --roxoescuro: #4a148c;
+    --roxomedio: #7b2cbf;
+    --azulclaro: #a9ead2;
+
+  /* Espaçamentos */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 40px;
+
+  /* Radius */
+    --radius-sm: 12px;
+    --radius-md: 20px;
+    --radius-lg: 50px;
+
+  /* Sombras */
+    --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.1);
+
+  /* Z-index */
+    --z-header: 10;
+    --z-menu: 20;
+    --z-modal: 50;
+
+  /* Transições */
+    --ease: 0.25s ease;
+}
+
+/* ==========================================================================
+    RESET
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* ===== PALETA DE CORES ===== */
-:root {
-    --cremefundo: #FDFBF4;       
-    --white: #FFFFFF;     
-    --roxoescuro: #4A148C;     
-    --azulclaro: #A9EAD2;       
-    --roxoclaro: #9B5DE5;     
-    --roxomedio: #7B2CBF;      
-}
-
 body {
-    font-family: 'Nunito', sans-serif;
-    background-color: var(--cremefundo);
+    font-family: "Nunito", sans-serif;
+    background-color: var(--color-bg);
     color: var(--roxoescuro);
-    overflow-x: hidden; 
+    overflow-x: hidden;
 }
 
 a {
-    text-align: center;
     text-decoration: none;
     display: inline-block;
 }
@@ -32,182 +64,149 @@ ul {
 }
 
 /* ==========================================================================
-    BARRA DE NAVEGAÇÃO (HEADER)
+    HEADER / NAVBAR
    ========================================================================== */
 
 .main-header {
-    width: 100%;
     position: relative;
-    z-index: 100;
-    padding: 20px 0 0 0; 
+    z-index: var(--z-menu);
 }
 
 .navbar {
-    
-    position: fixed;       
-    top: 20px;             /* Respiro do topo */
-    left: 50%;             /* Alinhamento da barra */
-    transform: translateX(-50%); /* Centralização */
-    
-    max-width: 1200px;
-    width: 92%;
-    background-color: var(--white);
-    padding: 12px 24px; 
-    border-radius: 50px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(92%, 1200px);
+    padding: 4px var(--space-lg);
     display: flex;
-    justify-content: space-between; 
     align-items: center;
-    overflow: hidden;
-    z-index: 999;          /* Faz barra sobrepor body */
+    justify-content: space-between;
+    background: var(--color-white);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    box-shadow: var(--shadow-md);
+    backdrop-filter: blur(10px);
+    z-index: var(--z-menu);
 }
 
-/* 1. Logotipo e Textos */
+/* --- Logo --- */
+
 .nav-logo {
     display: flex;
     align-items: center;
     gap: 10px;
-    text-decoration: none;
     flex-shrink: 0;
-}
+    }
 
 .logo-icon {
-    width: 38px; 
+    width: 38px;
     height: 38px;
-    background-color: var(--roxoescuro); 
     border-radius: 50%;
+    background: var(--roxoescuro);
 }
 
 .logo-text {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    white-space: nowrap;
+    color: var(--roxoescuro);
 }
 
 .brand-name {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: 800;
-    color: var(--roxoescuro);
-    line-height: 1.2;
 }
 
 .brand-sub {
     font-size: 0.75rem;
-    font-weight: 500;
     color: var(--roxomedio);
-    line-height: 1.2;
 }
 
-/* =====Lista de Links da Navbar===== */
+/* --- Nav Links --- */
+
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 8px;
-    
-    overflow-x: auto; 
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch; 
-    user-select: none;
-    -webkit-user-select: none;
-    padding: 5px 25px; /* Margem de segurança interna */
-    
-    flex: 1; /* Ocupa apenas o meio que sobrar */
-    justify-content: flex-start; /* Evita que o botão 'INICIO' suma na esquerda */
+    justify-content: center;
+    gap: 6px;
+    flex: 1;
+    margin: 0 var(--space-md);
+    flex-wrap: nowrap;
 }
 
-/* =====Ocultar barras de rolagem nativas===== */
-
-.nav-links::-webkit-scrollbar { display: none; }
-.nav-links { -ms-overflow-style: none; scrollbar-width: none; }
-
 .nav-item {
-    padding: 8px 12px;
-    font-size: 0.95rem;
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.92rem;
     font-weight: 700;
     color: var(--roxoescuro);
-    border-radius: 20px; 
-    transition: all 0.3s ease;
-    white-space: nowrap; 
-    flex-shrink: 0; /* Proíbe os botões de serem amassados */
-    -webkit-user-drag: none;
-
+    border-radius: var(--radius-md);
+    transition: background var(--ease);
+    white-space: nowrap;
 }
 
 .nav-item:hover {
-    color: var(--roxoescuro);
-    background-color: rgba(127, 45, 182, 0.2); /* Fundo botões ativos header */
+    background: rgba(123, 44, 191, 0.12);
 }
 
 .nav-item.active {
-    background-color: var(--azulclaro);
-    color: var(--roxoescuro) !important;
+    background: var(--azulclaro);
 }
 
-/* 3. Botão de Ação Direito */
+/* --- CTA Button --- */
+
 .nav-actions {
-    margin-left: 20px;
-    flex-shrink: 0; /* Escudo para o botão nunca sumir */
+    flex-shrink: 0;
 }
 
 .btn-appointment {
-    background-color: var(--roxoclaro);
-    color: #FFFFFF;
+    padding: 10px 18px;
+    background: var(--roxomedio);
+    color: var(--color-white);
+    border-radius: var(--radius-lg);
     font-weight: 700;
-    font-size: 0.95rem;
-    padding: 8px 20px;
-    border-radius: 25px; 
-    transition: transform 0.2s ease, background-color 0.3s ease;
-    box-shadow: 0 4px 10px rgba(155, 93, 229, 0.3);
+    transition: transform var(--ease);
 }
 
 .btn-appointment:hover {
-    background-color: #844ec4; /* Roxo ligeiramente mais escuro no hover */
-    transform: translateY(-2px); 
+    transform: translateY(-2px);
+}
+
+/* --- Hamburger --- */
+
+.menu-toggle {
+    display: none;
+    width: 42px;
+    height: 42px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 26px;
+    height: 3px;
+    background: var(--roxoescuro);
+    margin: 5px auto;
+    transition: transform 0.3s, opacity 0.3s;
 }
 
 /* ==========================================================================
-    RESPONSIVIDADE (MEDIA QUERIES)
+    HERO SECTION
    ========================================================================== */
 
-/* Telas Grandes: Centraliza tudo e protege o botão da direita de cortes */
-
-@media (min-width: 992px) {
-    .navbar {
-        overflow: visible; 
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .nav-logo {
-        flex: none; /* Deixa a logo ter apenas o tamanho natural dela */
-    }
-
-    .nav-actions {
-        flex: none; /* Deixa o botão direito ter apenas o tamanho natural dele */
-    }
-
-    .nav-links {
-        flex: none;             /* Desativa comportamento elástico */
-        max-width: none;        /* Remove qualquer trava de largura máxima */
-        justify-content: center; /* Centraliza os botões perfeitamente no espaço do meio */
-        overflow-x: visible;    /* Força todos os botões a ficarem visíveis (desativa a rolagem) */
-        overflow: visible;      
-        padding: 0;             /* Remove o padding que era usado para o arrasto */
-    }
+.hero-background {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--color-bg);
+    background-image: url("../img/back2.png");
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
 }
-
-/* ==========================================================================
-    SEÇÃO HERO BANNER (AJUSTE DA MOLDURA E ESPAÇAMENTO)
-   ========================================================================== */
 
 .hero-section {
-    margin-top: 50px;
     width: 100%;
-    padding: 20px 0 60px 0;
-    background-color: var(--cremefundo);
-    position: relative;
+    padding: var(--space-lg) 0 60px;
     display: flex;
     justify-content: center;
 }
@@ -215,116 +214,74 @@ ul {
 .hero-container {
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
+    transform: translateY(50px);
 }
+
+/* ==========================================================================
+    HERO CAROUSEL (Cloud Frame)
+   ========================================================================== */
 
 .organic-frame-container {
-    width: 92%;
-    max-width: 1000px; /* Aumentamos um pouco a largura para achatar o formato lateralmente */
-    height: 520px;     /* Proporção ideal */
+    width: 95%;
+    max-width: 1024px;
+    aspect-ratio: 2 / 1;
     position: relative;
+    margin: var(--space-xl) auto 0;
+    z-index: 1;
 }
 
-/* Container externo */
-.organic-frame-container {
-    width: 92%;
-    max-width: 980px;
-    height: 500px;
-    position: relative;
-}
-
-/*  A BORDA DA NUVEM */
-
-/* Container que define a área física da nuvem */
-.organic-frame-container {
-    width: 92%;
-    max-width: 920px;
-    height: 460px; /* Reduzimos levemente a altura para não sufocar a navbar */
-    position: relative;
-    margin-top: 20px; /* Garante uma distância limpa e segura da barra de menu */
-}
-
-/* Moldura que segura a borda e a imagem */
 .organic-frame {
     width: 100%;
     height: 100%;
     position: relative;
-    
-    padding: 12px; /*  O padding cria o recuo uniforme da foto em relação à linha roxa da nuvem */
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
+    display: block;
 }
 
-/* Estilização da moldura ocupa 100% do bloco e fica colada na foto */
-.cloud-border-svg {
+/* Cloud border  */
+.cloud-border-paint {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
+    object-fit: contain;
     pointer-events: none;
-    z-index: 10; /* Borda acima da foto para o traço ficar perfeito */
+    z-index: 10;
 }
 
-/* Corta o carrossel exatamente no formato interno da nuvem */
+/* Carousel Mask  */
 .carousel-mask {
-    width: 100%;
-    height: 100%;
-    clip-path: url(#cloud-clip-inner); /* Executa o corte na foto */
+    position: absolute;
+    inset: 0;
     overflow: hidden;
-    position: relative;
-    z-index: 1;
+    z-index: 0;
+    -webkit-mask-image: url("../img/mascara_preenchida2.svg");
+    mask-image: url("../img/mascara_preenchida2.svg");
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
 }
 
-/* Responsividade para manter a nuvem no celular */
-@media (max-width: 768px) {
-    .organic-frame-container {
-        height: 320px;
-    }
-    .organic-frame {
-        padding: 8px; /* Diminui o espaço no celular */
-    }
-    .organic-frame::before {
-        border-width: 5px; /* Borda um pouco mais fina no celular */
-    }
-}
-
-/* Responsividade: Mantém o formato lúdico proporcional no celular */
-@media (max-width: 768px) {
-    .organic-frame-container {
-        height: 340px;
-    }
-    .organic-frame, .carousel-mask {
-        border-radius: 40% 60% 40% 60% / 70% 30% 70% 30%; 
-        padding: 10px;
-    }
-}
-/* Configurações do Carrossel interno */
 .hero-carousel {
-    width: 100%;
-    height: 100%;   
-    position: relative;
-    background-color: #f0f0f0; /* Fundo neutro enquanto carrega */
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background: transparent;
 }
 
 .carousel-slide {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
+    inset: 0;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
-    z-index: 1;
+    overflow: hidden;
+    transition: opacity 600ms ease;
+    will-change: opacity;
 }
 
 .carousel-slide.active {
@@ -332,56 +289,159 @@ ul {
     z-index: 2;
 }
 
-/* Botões Inferiores */
+.carousel-slide img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    
+    display: block;
+}
+
+/* ==========================================================================
+    BOTÕES HERO
+   ========================================================================== */
+
 .hero-actions {
     display: flex;
-    gap: 20px;
+    gap: var(--space-lg);
     justify-content: center;
     align-items: center;
-    margin-top: 5px;
+    width: 100%;
+    max-width: 600px;
 }
 
+.btn-hero-primary,
 .btn-hero-secondary {
-    background-color: #A9EAD2;
+    padding: 12px 35px;
+    background-color: var(--azulclaro);
     color: var(--roxoescuro);
-    font-weight: 700;
     font-size: 0.95rem;
-    padding: 12px 35px;
-    border-radius: 25px;
-    box-shadow: 0 4px 15px rgba(169, 234, 210, 0.3);
-    transition: transform 0.2s ease;
-}
-
-.btn-hero-primary {
-    background-color: #E88A72;
-    color: #FFFFFF;
     font-weight: 700;
-    font-size: 0.95rem;
-    padding: 12px 35px;
     border-radius: 25px;
-    box-shadow: 0 4px 15px rgba(232, 138, 114, 0.3);
+    box-shadow: 0 4px 15px var(--roxomedio);
     transition: transform 0.2s ease;
+    text-align: center;      
+    display: inline-block;
 }
 
-.btn-hero-secondary:hover, .btn-hero-primary:hover {
-    transform: translateY(-2px);
+.btn-hero-primary:hover,
+.btn-hero-secondary:hover {
+    transform: translateY(-4px);
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .organic-frame-container {
-        height: 340px;
+
+
+/* ==========================================================================
+    RESPONSIVIDADE
+   ========================================================================== */
+
+/* --- Tablet (≤ 1024px) --- */
+
+@media (max-width: 1024px) {
+        .menu-toggle {
+        display: block;
+        z-index: var(--z-modal);
     }
-    .organic-frame, .carousel-mask {
-        border-radius: 45% 55% 45% 55% / 55% 45% 55% 45%; /* Simplifica no mobile */
-        padding: 8px; /* Reduz espaço no celular */
+
+    .nav-actions {
+        display: none;
     }
-    .hero-actions {
+
+    .nav-links {
+        position: fixed;
+        top: 90px;
+        left: -100%;
+        width: 92%;
+        max-width: 500px;
         flex-direction: column;
-        gap: 12px;
-        width: 80%;
+        gap: 15px;
+        padding: 30px;
+        background: var(--color-white);
+        border-radius: 30px;
+        box-shadow: var(--shadow-md);
+        transition: left 0.35s ease, transform 0.35s ease;
+        z-index: var(--z-menu);
     }
-    .btn-hero-secondary, .btn-hero-primary {
+
+    .nav-links.active {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .nav-item {
+        width: 100%;
+        text-align: center;
+    }
+
+  /* Mobile  */
+    .mobile-action {
+        display: block;
         width: 100%;
     }
+
+    .mobile-action .btn-appointment {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+  /* Hamburger */
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .hero-actions {
+        gap: 14px;
+    }
 }
+
+/* --- Mobile (≤ 768px) --- */
+
+    @media (max-width: 768px) {
+    .organic-frame-container {
+        width: 95%;
+        height: auto;
+        aspect-ratio: 4 / 3;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 80%;
+    }
+
+    .btn-hero-primary,
+    .btn-hero-secondary {
+        width: 100%;
+    }
+    }
+
+    /* --- Small mobile (≤ 480px) --- */
+
+    @media (max-width: 480px) {
+    .navbar {
+        padding: var(--space-md) var(--space-md);
+    }
+
+    .logo-icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .brand-name {
+        font-size: 1rem;
+    }
+
+    .brand-sub {
+        font-size: 0.65rem;
+    }
+    }
