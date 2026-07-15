@@ -1,119 +1,102 @@
-// ==========================================================================
-//  BARRA DE ROLAGEM MENU SUPERIOR (HEADER) 
-// ==========================================================================
+document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+    const navItems = document.querySelectorAll(".nav-item");
 
-document.addEventListener('DOMContentLoaded', () => {
-    const slider = document.querySelector('.nav-links');
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-    
-    let startXClick;
-    let startYClick;
-    const clickThreshold = 6; 
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", () => {
+            const isOpen = menuToggle.classList.toggle("active");
 
-    //  Clicou e segurou
-    slider.addEventListener('mousedown', (e) => {
-        isDown = true;
-        slider.style.cursor = 'grabbing';
-        startX = e.pageX - slider.offsetLeft;
-        scrollLeft = slider.scrollLeft;
+            navLinks.classList.toggle("active");
+            menuToggle.setAttribute("aria-expanded", isOpen);
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Fechar menu" : "Abrir menu"
+            );
+        });
 
-        startXClick = e.pageX;
-        startYClick = e.pageY;
-    });
+        navItems.forEach((item) => {
+            item.addEventListener("click", () => {
+                menuToggle.classList.remove("active");
+                navLinks.classList.remove("active");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Abrir menu");
+            });
+        });
 
-    //  Quando o mouse SE MOVE (Apenas se o botão estiver pressionado)
-    slider.addEventListener('mousemove', (e) => {
-        if (!isDown) return; // Se não estiver com o clique pressionado, ignora 
-        e.preventDefault();
-        const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 1.5; 
-        slider.scrollLeft = scrollLeft - walk;
-    });
+        document.addEventListener("click", (event) => {
+            const clickedOutside =
+                !navLinks.contains(event.target) &&
+                !menuToggle.contains(event.target);
 
-    //  Soltou o clique EM CIMA do menu
-    slider.addEventListener('mouseup', () => {
-        isDown = false;
-        slider.style.cursor = 'pointer';
-    });
-
-    //  Se o usuário arrastar o mouse para FORA do menu desliga arrasto
-    slider.addEventListener('mouseleave', () => {
-        isDown = false;
-        slider.style.cursor = 'pointer';
-    });
-
-    //  Se o usuário soltar o clique em qualquer lugar da tela
-    window.addEventListener('mouseup', () => {
-        if (isDown) {
-            isDown = false;
-            slider.style.cursor = 'pointer';
-        }
-    });
-
-    // Permite o arrasto da NavBar caso click seja encima de botão, evita arrasto fantasma do botão
-    slider.addEventListener('dragstart', (e) => {
-        e.preventDefault();
-    });
-
-    //  Controle fino evitar cliques falsos durante o arrasto
-    slider.querySelectorAll('.nav-item').forEach(link => {
-        link.addEventListener('click', (e) => {
-            const deltaX = Math.abs(e.pageX - startXClick);
-            const deltaY = Math.abs(e.pageY - startYClick);
-
-            // Evita ativação do botão caso a intenção seja arrastar
-            if (deltaX > clickThreshold || deltaY > clickThreshold) {
-                e.preventDefault();
-                e.stopPropagation();
+            if (clickedOutside) {
+                menuToggle.classList.remove("active");
+                navLinks.classList.remove("active");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Abrir menu");
             }
         });
-    });
-});
 
-const menuToggle = document.querySelector(".menu-toggle");
-const navLinks = document.querySelector(".nav-links");
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                menuToggle.classList.remove("active");
+                navLinks.classList.remove("active");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Abrir menu");
+            }
+        });
+    }
 
-if (menuToggle && navLinks) {
-    menuToggle.addEventListener("click", () => {
-        menuToggle.classList.toggle("active");
-        navLinks.classList.toggle("active");
-    });
-}
+    const carousel = document.querySelector(".orbital-carousel");
+    const slides = document.querySelectorAll(".carousel-slide");
 
-// ==========================================================================
-//  CARROSSEL AUTOMÁTICO DO HERO
-// ==========================================================================
-
-document.addEventListener('DOMContentLoaded', () => {
-
-    const slides = document.querySelectorAll('.carousel-slide');
     let currentSlide = 0;
+    let carouselTimer = null;
     const slideInterval = 5000;
 
-    let interval;
+    const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    function showSlide(index) {
+        slides[currentSlide].classList.remove("active");
+
+        currentSlide = index;
+
+        slides[currentSlide].classList.add("active");
+    }
 
     function nextSlide() {
-    if (slides.length === 0) return;
+        const nextIndex = (currentSlide + 1) % slides.length;
+        showSlide(nextIndex);
+    }
 
-    slides[currentSlide].classList.remove('active');
+    function startCarousel() {
+        stopCarousel();
+        carouselTimer = setInterval(nextSlide, slideInterval);
+    }
 
-    currentSlide = (currentSlide + 1) % slides.length;
+    function stopCarousel() {
+        if (carouselTimer) {
+            clearInterval(carouselTimer);
+            carouselTimer = null;
+        }
+    }
 
-    slides[currentSlide].classList.add('active');
-}
-
-
-    if (slides.length > 0) {
-        setInterval(nextSlide, slideInterval);
-}
-const carousel = document.querySelector('.hero-carousel');
-
-if (carousel && slides.length > 0) {
+    if (slides.length > 1 && !prefersReducedMotion) {
         startCarousel();
 
-        carousel.addEventListener('mouseenter', stopCarousel);
-        carousel.addEventListener('mouseleave', startCarousel);
+        if (carousel) {
+            carousel.addEventListener("mouseenter", stopCarousel);
+            carousel.addEventListener("mouseleave", startCarousel);
+        }
+
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                stopCarousel();
+            } else {
+                startCarousel();
+            }
+        });
     }
 });

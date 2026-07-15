@@ -3,42 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neusosynapsis | Psicologia & Desenvolvimento</title>
-    
+    <title>Neurosynapsis | Psicologia & Desenvolvimento</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/main.js" defer></script>
 </head>
-<body> 
-    
+
+<body>
     <div class="hero-background">
-        
         <header class="main-header">
-            <nav class="navbar">
-                <a href="#" class="nav-logo">
-                    <div class="logo-icon"></div>
+            <nav class="navbar" aria-label="Menu principal">
+                <a href="#" class="nav-logo" aria-label="Ir para o início">
+                    <div class="logo-icon" aria-hidden="true"></div>
+
                     <div class="logo-text">
                         <span class="brand-name">Neurosynapsis</span>
                         <span class="brand-sub">Psicologia & Desenvolvimento</span>
                     </div>
                 </a>
 
-                <button class="menu-toggle" aria-label="Abrir menu">
+                <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
                 </button>
 
                 <ul class="nav-links">
-                    <li><a href="#" class="nav-item active">Inicio</a></li>
-                    <li><a href="#" class="nav-item">Sobre Nós</a></li>
+                    <li><a href="#" class="nav-item active">Início</a></li>
+                    <li><a href="#" class="nav-item">Sobre nós</a></li>
                     <li><a href="#" class="nav-item">Especialidades</a></li>
-                    <li><a href="#" class="nav-item">Nossa Equipe</a></li>
+                    <li><a href="#" class="nav-item">Equipe</a></li>
                     <li><a href="#" class="nav-item">Blog</a></li>
                     <li><a href="#" class="nav-item">Contato</a></li>
-                    <li><a href="#" class="nav-item">Onde Estamos</a></li>
+                    <li><a href="#" class="nav-item">Onde estamos</a></li>
+
+                    <li class="mobile-action">
+                        <a href="#" class="btn-appointment">Agende um horário</a>
+                    </li>
                 </ul>
 
                 <div class="nav-actions">
@@ -47,38 +52,62 @@
             </nav>
         </header>
 
-        <section class="hero-section">
-         
+        <main>
+            <section class="hero-section">
+                <div class="hero-container">
+                    <div class="hero-text">
+                        <span class="hero-eyebrow">
+                            Atendimento infantil com acolhimento e ciência
+                        </span>
 
-            <div class="hero-container">
-                <div class="organic-frame-container">
-    <div class="organic-frame">
-        
-        <!-- CORRIGIDO: Removida a barra inicial '/' para alinhar com suas pastas locais -->
-        <img src="assets/img/mascarahero2.svg" class="cloud-border-paint" alt="Borda Pincel">
+                        <h1 class="hero-headline">
+                            Cada conquista do seu filho é uma
+                            <span class="highlight">vitória</span>
+                        </h1>
 
-        <div class="carousel-mask">
-            <div class="hero-carousel">
-                <!-- CORRIGIDO: Removida a div duplicada que estava aqui dentro -->
-                <div class="carousel-slide active">
-                    <img src="assets/img/foto1.jpg" alt="teste">
+                        <p class="hero-subtitle">
+                            Na Neurosynapsis, unimos ciência e acolhimento para acompanhar
+                            o desenvolvimento do seu filho com metodologia ABA — Cada pequena
+                            conquista importa e é celebrada.
+                        </p>
+
+                        <div class="hero-buttons">
+                            <a href="#" class="btn-hero-primary">
+                                Agendar consulta
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M5 12h14"/>
+                                    <path d="m12 5 7 7-7 7"/>
+                                </svg>
+                            </a>
+
+                            <a href="#" class="btn-hero-secondary">
+                                Conheça a equipe
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="hero-carousel-area">
+                        <div class="orbital-carousel">
+                            <img src="assets/img/borda2.svg" class="orbital-frame" alt="">
+
+                            <div class="carousel-mask">
+                                <div class="carousel-slides">
+                                    <div class="carousel-slide active">
+                                        <img src="assets/img/foto1.jpg" alt="Equipe Neurosynapsis em atendimento">
+                                    </div>
+
+                                    <div class="carousel-slide">
+                                        <img src="assets/img/ceuroxo.jpg" alt="Atendimento infantil Neurosynapsis">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="carousel-slide">
-                    <img src="assets/img/ceuroxo.jpg" alt="Slide 3" />
-                </div>
-            </div>
-        </div>
-
+            </section>
+        </main>
     </div>
-</div>
-
-                <div class="hero-actions">
-                    <a href="#" class="btn-hero-secondary">Nossos Serviços</a>
-                    <a href="#" class="btn-hero-primary">Conheça Nossa Equipe</a>
-                </div>
-            </div>
-        </section>
-
-    </div> <script src="assets/js/main.js" defer></script>
 </body>
 </html>
