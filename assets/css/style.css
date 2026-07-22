@@ -1,32 +1,59 @@
+/* =============================================================
+    NEUROSYNAPSIS · STYLESHEET
+    -------------------------------------------------------------
+    1. Design tokens (:root)
+    2. Reset & base
+    3. Layout / Background
+    4. Header (navbar, logo, links, buttons)
+    5. Hero section
+    6. Carousel
+    7. Quem Somos (badge, textos, timeline, molduras)
+    8. Cards conceituais
+    9. Responsivo
+   ============================================================= */
+
+
+/* =============================================================
+    1. DESIGN TOKENS
+   ============================================================= */
 :root {
-    --bg: #fdf8ef;
-    --surface: rgba(255, 255, 255, 0.82);
-    --white: #ffffff;
+    /* Cores – base */
+    --bg:            #fdf8ef;
+    --surface:       rgba(255, 255, 255, 0.82);
+    --white:         #ffffff;
 
-    --purple-900: #35105f;
-    --purple-700: #5b21b6;
-    --purple-500: #8b5cf6;
+    /* Cores – marca */
+    --purple-900:    #35105f;
+    --purple-700:    #5b21b6;
+    --purple-500:    #8b5cf6;
 
-    --mint: #a9ead2;
-    --mint-soft: #e7fbf3;
-    --lavender: #ddd6fe;
+    /* Cores – acentos */
+    --mint:          #a9ead2;
+    --mint-soft:     #e7fbf3;
+    --lavender:      #ddd6fe;
 
-    --text: #35105f;
-    --muted: #6f6380;
+    /* Cores – texto */
+    --text:          #35105f;
+    --muted:         #6f6380;
 
-    --radius-sm: 12px;
-    --radius-md: 22px;
-    --radius-lg: 999px;
+    /* Raios */
+    --radius-sm:     12px;
+    --radius-md:     22px;
+    --radius-lg:     999px;
 
-    --shadow-soft: 0 18px 50px rgba(53, 16, 95, 0.08);
+    /* Sombras */
+    --shadow-soft:   0 18px 50px rgba(53, 16, 95, 0.08);
     --shadow-button: 0 12px 26px rgba(91, 33, 182, 0.22);
 
-    --container: 1200px;
-    --ease: 0.25s ease;
+    /* Layout */
+    --container:     1200px;
+    --ease:          0.25s ease;
 }
 
-/* RESET */
 
+/* =============================================================
+    2. RESET & BASE
+   ============================================================= */
 *,
 *::before,
 *::after {
@@ -56,14 +83,12 @@ ul {
     list-style: none;
 }
 
-img,
-svg {
+img, svg {
     display: block;
     max-width: 100%;
 }
 
-button,
-a {
+button, a {
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -72,21 +97,25 @@ a {
     outline-offset: 4px;
 }
 
-/* BACKGROUND */
 
+/* =============================================================
+    3. LAYOUT / BACKGROUND
+   ============================================================= */
 .hero-background {
     position: relative;
     min-height: 100vh;
     background:
         radial-gradient(circle at 10% 20%, rgba(169, 234, 210, 0.38), transparent 28%),
         radial-gradient(circle at 90% 15%, rgba(221, 214, 254, 0.55), transparent 30%),
-        url("../img/back2.png") no-repeat center top / cover;
+        url("../img/background1.png") no-repeat center top / cover;
 }
 
 
+/* =============================================================
+    4. HEADER
+   ============================================================= */
 
-/* HEADER */
-
+/* ----- Navbar ------------------------------------------------ */
 .main-header {
     position: relative;
     z-index: 20;
@@ -97,6 +126,7 @@ a {
     top: 20px;
     left: 50%;
     z-index: 30;
+    transform: translateX(-50%);
 
     width: min(92%, var(--container));
     min-height: 74px;
@@ -113,12 +143,9 @@ a {
     box-shadow: var(--shadow-soft);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
-
-    transform: translateX(-50%);
 }
 
-/* LOGO */
-
+/* ----- Logo -------------------------------------------------- */
 .nav-logo {
     display: flex;
     align-items: center;
@@ -155,14 +182,13 @@ a {
     color: var(--muted);
 }
 
-/* NAV */
-
+/* ----- Nav links --------------------------------------------- */
 .nav-links {
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 4px;
-    flex: 1;
 }
 
 .nav-item {
@@ -175,9 +201,9 @@ a {
     white-space: nowrap;
 
     transition:
-        color var(--ease),
+        color      var(--ease),
         background var(--ease),
-        transform var(--ease);
+        transform  var(--ease);
 }
 
 .nav-item:hover {
@@ -198,8 +224,7 @@ a {
     display: none;
 }
 
-/* BUTTONS */
-
+/* ----- Buttons ----------------------------------------------- */
 .btn-appointment,
 .btn-hero-primary,
 .btn-hero-secondary {
@@ -209,18 +234,18 @@ a {
     border-radius: var(--radius-lg);
     font-weight: 800;
     transition:
-        transform var(--ease),
+        transform  var(--ease),
         box-shadow var(--ease),
         background var(--ease),
-        color var(--ease);
+        color      var(--ease);
 }
 
 .btn-appointment {
     padding: 12px 22px;
+    font-size: 0.9rem;
     color: var(--white);
     background: linear-gradient(135deg, var(--purple-700), var(--purple-500));
     box-shadow: var(--shadow-button);
-    font-size: 0.9rem;
 }
 
 .btn-appointment:hover,
@@ -234,8 +259,7 @@ a {
     box-shadow: 0 16px 32px rgba(91, 33, 182, 0.28);
 }
 
-/* MENU MOBILE */
-
+/* ----- Menu toggle (mobile) ---------------------------------- */
 .menu-toggle {
     display: none;
     width: 44px;
@@ -253,11 +277,15 @@ a {
     margin: 5px auto;
     border-radius: 99px;
     background: var(--purple-900);
-    transition: transform var(--ease), opacity var(--ease);
+    transition:
+        transform var(--ease),
+        opacity   var(--ease);
 }
 
-/* HERO */
 
+/* =============================================================
+    5. HERO SECTION
+   ============================================================= */
 .hero-section {
     position: relative;
     z-index: 2;
@@ -278,6 +306,7 @@ a {
     gap: clamp(36px, 6vw, 80px);
 }
 
+/* ----- Hero: texto ------------------------------------------- */
 .hero-text {
     display: flex;
     flex-direction: column;
@@ -347,11 +376,11 @@ a {
 }
 
 .hero-buttons {
+    margin-top: 4px;
     display: flex;
     align-items: center;
     gap: 14px;
     flex-wrap: wrap;
-    margin-top: 4px;
 }
 
 .btn-hero-primary {
@@ -373,13 +402,15 @@ a {
     background: var(--white);
 }
 
-/* CAROUSEL */
 
+/* =============================================================
+    6. CAROUSEL
+   ============================================================= */
 .hero-carousel-area {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
 }
 
 .hero-carousel-area::before {
@@ -418,7 +449,7 @@ a {
     z-index: 1;
     overflow: hidden;
     -webkit-mask: url("../img/fundo3.svg") no-repeat center / contain;
-    mask: url("../img/fundo3.svg") no-repeat center / contain;
+            mask: url("../img/fundo3.svg") no-repeat center / contain;
 }
 
 .carousel-slides,
@@ -443,9 +474,294 @@ a {
     object-fit: cover;
 }
 
-/* RESPONSIVO */
 
+/* =============================================================
+    7. QUEM SOMOS
+   ============================================================= */
+.quem-somos-secao {
+    position: relative;
+    min-height: 100vh;
+    background: url("../img/background2.png") no-repeat center top / cover;
+}
+
+.container-quem-somos {
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+/* ----- Topo / Badge ------------------------------------------ */
+.topo-secao {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.badge-trajetoria {
+    display: inline-block;
+    padding: 10px 28px;
+
+    background-color: #ffffff;
+    color: #6c42f5;
+    border: 2px solid #a48cff;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(108, 66, 245, 0.08);
+
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* ----- Layout principal -------------------------------------- */
+.conteudo-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    margin-bottom: 70px;
+}
+
+.bloco-esquerdo {
+    flex: 1.1;
+}
+
+.bloco-direito {
+    flex: 0.9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ----- Textos ------------------------------------------------ */
+.subtitulo-secao {
+    margin-bottom: 24px;
+    font-size: 32px;
+    font-weight: 800;
+    color: #2d0c5a;
+}
+
+.paragrafo-quem-somos {
+    margin-bottom: 18px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #5a4f66;
+}
+
+.paragrafo-quem-somos strong {
+    color: #6c42f5;
+}
+
+/* ----- Timeline ---------------------------------------------- */
+.timeline {
+    position: relative;
+    margin-top: 50px;
+    width: 100%;
+    height: 170px;
+}
+
+.timeline-wave {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    pointer-events: none;
+}
+
+.timeline-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 100%;
+}
+
+.timeline-item {
+    position: relative;
+    height: 100%;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #6C42F5;
+    border: 3px solid #FFF;
+    box-shadow: 0 0 0 4px rgba(108, 66, 245, 0.15);
+}
+
+.timeline-item.top    .timeline-dot { top: 53px;  }
+.timeline-item.bottom .timeline-dot { top: 107px; }
+
+.timeline-card {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+
+    text-align: center;
+    white-space: nowrap;
+    font-size: 14px;
+    color: #2d0c5a;
+}
+
+.timeline-card strong {
+    font-size: 18px;
+    font-weight: 800;
+    color: #6C42F5;
+}
+
+.timeline-card span {
+    color: #5a4f66;
+    font-weight: 600;
+}
+
+.timeline-item.top    .timeline-card { bottom: calc(100% - 53px + 18px); }
+.timeline-item.bottom .timeline-card { top:    calc(107px + 18px);       }
+
+/* ----- Molduras ---------------------------------------------- */
+.molduras-grupo {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    height: 380px;
+}
+
+.wrapper-moldura {
+    position: absolute;
+    transition: transform 0.4s ease;
+}
+
+.moldura-esquerda {
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 320px;
+}
+
+.moldura-direita {
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 270px;
+}
+
+.img-moldura {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 15px 30px rgba(108, 66, 245, 0.08));
+}
+
+.wrapper-moldura:hover {
+    transform: scale(1.03) translateY(-3px);
+    z-index: 3;
+}
+
+
+/* =============================================================
+    8. CARDS CONCEITUAIS
+   ============================================================= */
+.grid-cards-conceito {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.card-conceito {
+    position: relative;
+    padding: 35px 30px;
+    border-radius: 30px;
+    box-shadow: 0 10px 25px rgba(108, 66, 245, 0.04);
+    overflow: hidden;
+    transition:
+        transform  0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.card-conceito:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(108, 66, 245, 0.08);
+}
+
+/* Variantes de cor */
+.card-missao {
+    background: linear-gradient(135deg, #e9e5ff 0%, #d8d0fc 100%);
+    border: 1px solid rgba(108, 66, 245, 0.15);
+}
+
+.card-metodologia {
+    background: linear-gradient(135deg, #e4faf5 0%, #c9f5ec 100%);
+    border: 1px solid rgba(38, 196, 163, 0.15);
+}
+
+.card-valores {
+    background: linear-gradient(135deg, #fef4df 0%, #fde7be 100%);
+    border: 1px solid rgba(255, 212, 106, 0.2);
+}
+
+/* Tipografia dos cards */
+.titulo-card {
+    margin-bottom: 12px;
+    font-size: 20px;
+    font-weight: 800;
+    color: #2d0c5a;
+}
+
+.texto-card {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: #4c3c5c;
+}
+
+.lista-valores {
+    padding: 0;
+    list-style: none;
+}
+
+.lista-valores li {
+    position: relative;
+    padding-left: 15px;
+    margin-bottom: 8px;
+
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #4c3c5c;
+}
+
+.lista-valores li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #6c42f5;
+    font-weight: bold;
+}
+
+.icone-card {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    font-size: 24px;
+    opacity: 0.6;
+}
+
+
+/* =============================================================
+    9. RESPONSIVO
+   ============================================================= */
+
+/* ----- Tablet (≤ 1080px) ------------------------------------- */
 @media (max-width: 1080px) {
+
+    /* Navbar */
     .navbar {
         width: min(94%, var(--container));
     }
@@ -465,13 +781,13 @@ a {
         left: 0;
         right: 0;
 
+        width: 100%;
+        padding: 18px;
+
         display: flex;
         flex-direction: column;
         align-items: stretch;
         gap: 8px;
-
-        width: 100%;
-        padding: 18px;
 
         background: rgba(255, 255, 255, 0.96);
         border: 1px solid rgba(221, 214, 254, 0.8);
@@ -482,9 +798,9 @@ a {
         visibility: hidden;
         transform: translateY(-8px);
         transition:
-            opacity var(--ease),
+            opacity    var(--ease),
             visibility var(--ease),
-            transform var(--ease);
+            transform  var(--ease);
     }
 
     .nav-links.active {
@@ -495,8 +811,8 @@ a {
 
     .nav-item {
         width: 100%;
-        text-align: center;
         padding: 13px 16px;
+        text-align: center;
     }
 
     .mobile-action {
@@ -508,18 +824,12 @@ a {
         width: 100%;
     }
 
-    .menu-toggle.active .bar:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
+    /* Menu toggle animado */
+    .menu-toggle.active .bar:nth-child(1) { transform: rotate(45deg)  translate(5px,  5px); }
+    .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
+    .menu-toggle.active .bar:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-    .menu-toggle.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    .menu-toggle.active .bar:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
-    }
-
+    /* Hero */
     .hero-container {
         grid-template-columns: 1fr;
         text-align: center;
@@ -544,7 +854,29 @@ a {
     }
 }
 
+/* ----- Tablet vertical (≤ 991px) ----------------------------- */
+@media (max-width: 991px) {
+
+    .conteudo-principal {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .molduras-grupo {
+        margin-top: 40px;
+        height: 340px;
+    }
+
+    .grid-cards-conceito {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ----- Mobile (≤ 640px) -------------------------------------- */
 @media (max-width: 640px) {
+
+    /* Navbar */
     .navbar {
         top: 12px;
         min-height: 64px;
@@ -565,6 +897,7 @@ a {
         display: none;
     }
 
+    /* Hero */
     .hero-section {
         padding: 108px 18px 44px;
     }
@@ -587,6 +920,7 @@ a {
         width: 100%;
     }
 
+    /* Carousel */
     .orbital-carousel {
         width: min(100%, 360px);
     }
