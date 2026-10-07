@@ -61,7 +61,7 @@
 
     /* Layout */
     --container:     1200px;
-    --ease:          0.25s ease;
+    --ease:          0.25s;
 }
 
 
@@ -121,7 +121,9 @@ button, a {
     background:
         radial-gradient(circle at 10% 20%, rgba(169, 234, 210, 0.38), transparent 28%),
         radial-gradient(circle at 90% 15%, rgba(221, 214, 254, 0.55), transparent 30%),
-        url("../img/background1.png") no-repeat center center / cover;
+        url("../img/fundohero.png") no-repeat center center / cover;
+
+
 }
 
 
@@ -474,7 +476,7 @@ button, a {
 
 .carousel-slide {
     opacity: 0;
-    transition: opacity 0.6s ease;
+    transition: opacity 0.6s;
 }
 
 .carousel-slide.active {
@@ -496,7 +498,7 @@ button, a {
     position: relative;
     min-height: 100vh;
     padding: clamp(64px, 8vw, 112px) clamp(18px, 4vw, 40px);
-    background: url("../img/background3.png") no-repeat center center / cover;
+    background: url("../img/fundosobrenos.png") no-repeat center top / cover;
 }
 
 .container-quem-somos {
@@ -663,7 +665,7 @@ button, a {
     padding: 8px; /* Espaço entre a borda pontilhada e a foto */
     box-shadow: var(--shadow-soft);
     transform: rotate(-2deg); /* Leve inclinação charmosa */
-    transition: transform 0.4s var(--ease);
+    transition: transform 0.4s;
 }
 
 .carousel-dotted:hover {
@@ -683,7 +685,7 @@ button, a {
     inset: 0;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.8s var(--ease), visibility 0.8s var(--ease);
+    transition: opacity 0.8s , visibility 0.8s;
 }
 
 .slide-dotted.active {
@@ -745,8 +747,8 @@ button, a {
     box-shadow: 0 10px 25px rgba(108, 66, 245, 0.04);
     overflow: hidden;
     transition:
-        transform  0.3s ease,
-        box-shadow 0.3s ease;
+        transform  0.3s,
+        box-shadow 0.3s;
 }
 
 .card-conceito:hover {
@@ -818,8 +820,11 @@ button, a {
    ========================================================= */
 
 .especialidades-secao {
-    padding: 80px 20px;
-    background-color: var(--bg-main, #FAFCF9);
+    padding: 110px 20px 80px;
+        background: url("../img/fundoespe.png");
+        background-size: 100% 100%, 100% auto;
+    background-position: center, top center;
+    background-repeat: no-repeat;
 }
 
 .container-especialidades {
@@ -883,7 +888,7 @@ button, a {
     box-shadow: var(--shadow-soft);
 
     transform: rotate(-2deg);
-    transition: transform 0.4s var(--ease);
+    transition: transform 0.4s;
 }
 
 .card-ilustracao:hover {
