@@ -21,7 +21,6 @@
         HERO + HEADER
         ========================================================= -->
     <div class="hero-background">
-
         <header class="main-header">
             <nav class="navbar" aria-label="Menu principal">
 
@@ -136,7 +135,7 @@
                 <div class="badge-trajetoria">Nossa Trajetória, Nosso Propósito</div>
             </div>
 
-            <!-- Conteúdo principal (texto + molduras) -->
+            <!-- Conteúdo principal (texto + carrossel) -->
             <div class="conteudo-principal">
 
                 <!-- Bloco esquerdo: texto + timeline -->
@@ -165,8 +164,43 @@
                         acolhimento, colaboração e objetivos compartilhados entre todos os
                         envolvidos em seu cuidado.
                     </p>
+                    
+                </div>
 
-                    <!-- Timeline horizontal -->
+                <!-- Bloco direito: carrossel no quadro pontilhado -->
+                <div class="bloco-direito">
+                    <div class="carousel-dotted-container">
+                        <div class="carousel-dotted">
+                            <div class="slides-dotted">
+                                <div class="slide-dotted active">
+                                    <img src="assets/img/ceuroxo.jpg" alt="Atendimento Clínico Infantil">
+                                </div>
+                                <div class="slide-dotted">
+                                    <img src="assets/img/foto1.jpg" alt="Nosso Espaço Físico">
+                                </div>
+                                <div class="slide-dotted">
+                                    <img src="assets/img/ceuroxo.jpg" alt="Equipe Neurosynapsis">
+                                </div>
+                            </div>
+                        </div>
+                            <!-- Navegação do carrossel -->
+                            <div class="carousel-nav">
+                                <button class="nav-prev" aria-label="Anterior">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                                </button>
+                                <button class="nav-next" aria-label="Próximo">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Cards conceituais -->
+                <div class="bloco-baixo">
+
                     <div class="timeline">
                         <svg class="timeline-wave" viewBox="0 0 600 100" preserveAspectRatio="none">
                             <path d="M0 50
@@ -184,7 +218,7 @@
                             <div class="timeline-item top">
                                 <div class="timeline-card">
                                     <strong>Ciência</strong>
-                                    <span></span>
+                                    <span>Baseada em evidências</span>
                                 </div>
                                 <div class="timeline-dot"></div>
                             </div>
@@ -192,7 +226,7 @@
                             <div class="timeline-item bottom">
                                 <div class="timeline-card">
                                     <strong>Afeto</strong>
-                                    <span></span>
+                                    <span>Com cada família</span>
                                 </div>
                                 <div class="timeline-dot"></div>
                             </div>
@@ -200,63 +234,153 @@
                             <div class="timeline-item top">
                                 <div class="timeline-card">
                                     <strong>Individualidade</strong>
-                                    <span></span>
+                                    <span>De cada criança</span>
                                 </div>
                                 <div class="timeline-dot"></div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Bloco direito: molduras -->
-                <div class="bloco-direito">
-                    <div class="molduras-grupo">
-                        <div class="wrapper-moldura moldura-esquerda">
-                            <img src="moldura-esquerda.svg" alt="Atendimento Clínico Infantil" class="img-moldura">
+
+                    <div class="grid-cards-conceito">
+
+                        <div class="card-conceito card-missao">
+                            <h3 class="titulo-card">Nossa Missão</h3>
+                            <p class="texto-card">
+                                Oferecer intervenções baseadas em ciência e afeto, estimulando o
+                                desenvolvimento infantil com respeito à individualidade.
+                            </p>
+                            <div class="icone-card">✨</div>
                         </div>
-                        <div class="wrapper-moldura moldura-direita">
-                            <img src="moldura-direita.svg" alt="Nosso Espaço Físico" class="img-moldura">
+
+                        <div class="card-conceito card-metodologia">
+                            <h3 class="titulo-card">Nossa Metodologia (ABA)</h3>
+                            <p class="texto-card">
+                                Aplicação consistente da ciência ABA para analisar comportamentos e
+                                promover a autonomia e novas habilidades de forma lúdica.
+                            </p>
+                            <div class="icone-card">🧩</div>
                         </div>
+
+                        <div class="card-conceito card-valores">
+                            <h3 class="titulo-card">Nossos Valores</h3>
+                            <ul class="lista-valores">
+                                <li>Família e acolhimento</li>
+                                <li>Qualidade e rigor clínico</li>
+                                <li>Amor em cada detalhe</li>
+                            </ul>
+                            <div class="icone-card">🤝</div>
+                        </div>
+                </div>
+            </div>
+
+        
+    </section>
+
+    <section class="especialidades-secao" id="especialidades">
+    <div class="container-especialidades">
+
+        <!-- Header da Seção -->
+        <div class="topo-secao">
+            <div class="badge-trajetoria">Nossas Especialidades</div>
+            <h2 class="subtitulo-secao">Uma jornada de cuidado para cada necessidade</h2>
+            <p class="paragrafo-especialidades">
+                Do primeiro contato ao acompanhamento contínuo, conheça os serviços que oferecemos.
+            </p>
+        </div>
+
+        <!-- Lista Alternada de Serviços -->
+        <div class="lista-especialidades">
+
+            <!-- Item 01 (PSICOTERAPIA INFANTIL) -->
+            <article class="item-especialidade">
+                <div class="midia-especialidade">
+                    <div class="card-ilustracao">
+                        <!-- Ícone Afeto/Criança -->
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
                     </div>
                 </div>
-
-            </div>
-
-            <!-- Cards conceituais -->
-            <div class="grid-cards-conceito">
-
-                <div class="card-conceito card-missao">
-                    <h3 class="titulo-card">Nossa Missão</h3>
-                    <p class="texto-card">
-                        Oferecer intervenções baseadas em ciência e afeto, estimulando o
-                        desenvolvimento infantil com respeito à individualidade.
-                    </p>
-                    <div class="icone-card">✨</div>
+                <div class="info-especialidade">
+                    <span class="categoria-tag"> • Para Famílias</span>
+                    <h3 class="titulo-especialidade">Psicoterapia Infantil</h3>
+                    <p>A psicoterapia infantil é um processo terapêutico voltado ao desenvolvimento emocional, comportamental e social da criança. Por meio de estratégias adequadas à faixa etária e fundamentadas em evidências científicas, o atendimento auxilia na identificação e no manejo de dificuldades relacionadas à regulação emocional, habilidades sociais, comportamento, aprendizagem, ansiedade, autoestima, adaptação a mudanças e outros desafios do desenvolvimento.</p>
+                    <p>O trabalho é realizado em parceria com a família e, quando necessário, com a escola e outros profissionais envolvidos no acompanhamento da criança.</p>
+                    <a href="#" class="link-acao">Conhecer o processo <span>→</span></a>
                 </div>
+            </article>
 
-                <div class="card-conceito card-metodologia">
-                    <h3 class="titulo-card">Nossa Metodologia (ABA)</h3>
-                    <p class="texto-card">
-                        Aplicação consistente da ciência ABA para analisar comportamentos e
-                        promover a autonomia e novas habilidades de forma lúdica.
-                    </p>
-                    <div class="icone-card">🧩</div>
+            <!-- Item 02 (AVALIAÇÃO NEUROPSICOLÓGICA) -->
+            <article class="item-especialidade invertido">
+                <div class="midia-especialidade">
+                    <div class="card-ilustracao">
+                        <!-- Ícone Cérebro/Cognitivo -->
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M12 5v13"/></svg>
+                    </div>
                 </div>
-
-                <div class="card-conceito card-valores">
-                    <h3 class="titulo-card">Nossos Valores</h3>
-                    <ul class="lista-valores">
-                        <li>Família e acolhimento</li>
-                        <li>Qualidade e rigor clínico</li>
-                        <li>Amor em cada detalhe</li>
-                    </ul>
-                    <div class="icone-card">🤝</div>
+                <div class="info-especialidade">
+                    <span class="categoria-tag"> • Para Famílias</span>
+                    <h3 class="titulo-especialidade">Avaliação Neuropsicológica</h3>
+                    <p>A avaliação neuropsicológica é um processo especializado que investiga o funcionamento cognitivo, comportamental e emocional do indivíduo. Por meio da aplicação de instrumentos padronizados, observação clínica e entrevistas, são avaliadas habilidades como atenção, memória, linguagem, funções executivas, raciocínio, aprendizagem e aspectos socioemocionais.</p>
+                    <p>Os resultados auxiliam na compreensão das potencialidades e dificuldades apresentadas, contribuindo para diagnósticos mais precisos e para o planejamento de intervenções adequadas às necessidades de cada paciente.</p>
+                    <a href="#" class="link-acao">Entender a avaliação <span>→</span></a>
                 </div>
+            </article>
 
-            </div>
+            <!-- Item 03 (ORIENTAÇÃO PARENTAL) -->
+            <article class="item-especialidade">
+                <div class="midia-especialidade">
+                    <div class="card-ilustracao">
+                        <!-- Ícone Família/Cuidadores -->
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                </div>
+                <div class="info-especialidade">
+                    <span class="categoria-tag"> • Para Famílias</span>
+                    <h3 class="titulo-especialidade">Orientação Parental</h3>
+                    <p>A orientação parental é um serviço destinado aos pais e cuidadores que buscam compreender melhor o comportamento infantil e desenvolver estratégias mais eficazes para lidar com os desafios do cotidiano.</p>
+                    <p>O processo oferece suporte para a construção de práticas educativas positivas, fortalecimento dos vínculos familiares, promoção da autonomia da criança e manejo de comportamentos desafiadores. O objetivo é capacitar a família para atuar de forma mais segura e consistente no desenvolvimento infantil.</p>
+                    <a href="#" class="link-acao">Saiba como funciona <span>→</span></a>
+                </div>
+            </article>
+
+            <!-- Item 04 (SUPERVISÃO CLINICA) -->
+            <article class="item-especialidade invertido">
+                <div class="midia-especialidade">
+                    <div class="card-ilustracao">
+                        <!-- Ícone Prancha/Análise Clínica -->
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="m9 14 2 2 4-4"/></svg>
+                    </div>
+                </div>
+                <div class="info-especialidade">
+                    <span class="categoria-tag"> • Para Profissionais</span>
+                    <h3 class="titulo-especialidade">Supervisão Clínica</h3>
+                    <p>A supervisão clínica é direcionada a psicólogos e profissionais que atuam ou desejam atuar na área do desenvolvimento infantil e da Análise do Comportamento Aplicada (ABA).</p>
+                    <p>O serviço tem como objetivo promover o aprimoramento técnico e ético da prática profissional, por meio da discussão de casos, análise de estratégias de intervenção, interpretação de avaliações e planejamento terapêutico. A supervisão busca fortalecer a tomada de decisão clínica e garantir intervenções alinhadas às melhores práticas baseadas em evidências científicas.</p>
+                    <a href="#" class="link-acao">Solicitar supervisão <span>→</span></a>
+                </div>
+            </article>
+
+            <!-- Item 05 (PALESTRAS E CAPACITAÇÕES PARA ESCOLAS) -->
+            <article class="item-especialidade card-destaque">
+                <div class="midia-especialidade">
+                    <div class="card-ilustracao">
+                        <!-- Ícone Escola/Educação -->
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    </div>
+                </div>
+                <div class="info-especialidade">
+                    <span class="categoria-tag"> • Para Instituições de Ensino</span>
+                    <h3 class="titulo-especialidade">Palestras e Capacitações para Escolas</h3>
+                    <p>As palestras e capacitações para instituições de ensino têm como objetivo promover conhecimento técnico e prático sobre os transtornos do neurodesenvolvimento, contribuindo para a construção de ambientes escolares mais inclusivos, acessíveis e preparados para atender às necessidades dos alunos. Os encontros abordam temas como Transtorno do Espectro Autista (TEA), Transtorno do Déficit de Atenção e Hiperatividade (TDAH), deficiência intelectual, dificuldades de aprendizagem, manejo comportamental e estratégias de inclusão escolar.</p>
+                    <p>O conteúdo é adaptado à realidade de cada instituição e pode ser direcionado a professores, equipes pedagógicas, auxiliares, cuidadores e demais profissionais da educação.</p>
+                    <p>Além de aspectos teóricos, são discutidas estratégias práticas para o cotidiano escolar, a importância do trabalho interdisciplinar e formas de favorecer o desenvolvimento acadêmico, social e emocional dos estudantes. O objetivo é capacitar os profissionais para uma atuação mais segura, acolhedora e alinhada às necessidades individuais de cada aluno.</p>
+                    <a href="#" class="link-acao">Solicitar proposta para escola <span>→</span></a>
+                </div>
+            </article>
 
         </div>
-    </section>
+    </div>
+</section>
 
 </body>
 </html>

@@ -1,5 +1,5 @@
 /* =============================================================
-    NEUROSYNAPSIS · STYLESHEET
+    NEUROSYNAPSIS · 
     -------------------------------------------------------------
     1. Design tokens (:root)
     2. Reset & base
@@ -7,7 +7,7 @@
     4. Header (navbar, logo, links, buttons)
     5. Hero section
     6. Carousel
-    7. Quem Somos (badge, textos, timeline, molduras)
+    7. Quem Somos (badge, textos, timeline, carrossel)
     8. Cards conceituais
     9. Responsivo
    ============================================================= */
@@ -18,7 +18,8 @@
    ============================================================= */
 :root {
     /* Cores – base */
-    --bg:            #fdf8ef;
+    --bg:            #FAF3EE;
+    --bg2:           #F7EBE6;
     --surface:       rgba(255, 255, 255, 0.82);
     --white:         #ffffff;
 
@@ -34,7 +35,20 @@
 
     /* Cores – texto */
     --text:          #35105f;
+    --text-deep:     #2d0c5a;
+    --text-body:     #5a4f66;
+    --text-card:     #4c3c5c;
     --muted:         #6f6380;
+
+    /* Cores – marca (alias direto) */
+    --accent:        #6c42f5;
+
+    /* Cores da seção de especialidades */
+    --bg-main:       #fafcf9;
+    --primary-dark:  #1b4332;
+    --primary-color: #2d6a4f;
+    --text-color:    #2b2d42;
+    --text-muted:    #5c677d;
 
     /* Raios */
     --radius-sm:     12px;
@@ -107,7 +121,7 @@ button, a {
     background:
         radial-gradient(circle at 10% 20%, rgba(169, 234, 210, 0.38), transparent 28%),
         radial-gradient(circle at 90% 15%, rgba(221, 214, 254, 0.55), transparent 30%),
-        url("../img/background1.png") no-repeat center top / cover;
+        url("../img/background1.png") no-repeat center center / cover;
 }
 
 
@@ -127,7 +141,7 @@ button, a {
     left: 50%;
     z-index: 30;
     transform: translateX(-50%);
-
+    isolation: isolate;
     width: min(92%, var(--container));
     min-height: 74px;
     padding: 10px 18px 10px 16px;
@@ -481,30 +495,25 @@ button, a {
 .quem-somos-secao {
     position: relative;
     min-height: 100vh;
-    background: url("../img/background2.png") no-repeat center top / cover;
+    padding: clamp(64px, 8vw, 112px) clamp(18px, 4vw, 40px);
+    background: url("../img/background3.png") no-repeat center center / cover;
 }
 
 .container-quem-somos {
     max-width: 1150px;
     margin: 0 auto;
+    padding: 0 clamp(16px, 3vw, 32px);
 }
 
 /* ----- Topo / Badge ------------------------------------------ */
-.topo-secao {
-    margin-bottom: 50px;
-    text-align: center;
-}
-
 .badge-trajetoria {
     display: inline-block;
     padding: 10px 28px;
-
-    background-color: #ffffff;
-    color: #6c42f5;
+    background-color: var(--white);
+    color: var(--accent);
     border: 2px solid #a48cff;
     border-radius: 50px;
     box-shadow: 0 4px 12px rgba(108, 66, 245, 0.08);
-
     font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.5px;
@@ -536,26 +545,37 @@ button, a {
     margin-bottom: 24px;
     font-size: 32px;
     font-weight: 800;
-    color: #2d0c5a;
+    color: var(--text-deep);
 }
 
 .paragrafo-quem-somos {
     margin-bottom: 18px;
     font-size: 16px;
     line-height: 1.7;
-    color: #5a4f66;
+    color: var(--text-body);
 }
 
 .paragrafo-quem-somos strong {
-    color: #6c42f5;
+    color: var(--accent);
 }
 
 /* ----- Timeline ---------------------------------------------- */
+.timeline-container-full {
+    width: 100vw; /* Ocupa toda a largura da janela */
+    position: relative;
+    left: 50%;
+    margin-left: -50vw; /* Técnica para esticar ignorando o container pai */
+    margin-top: 60px;
+    margin-bottom: 40px;
+    padding: 20px 0;
+    overflow-x: auto;
+}
+
 .timeline {
     position: relative;
-    margin-top: 50px;
-    width: 100%;
-    height: 170px;
+    width: 100%; /* Agora ocupa 100% da largura total da tela */
+    height: 220px;
+    margin: 0;
 }
 
 .timeline-wave {
@@ -584,12 +604,11 @@ button, a {
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
-
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    background: #6C42F5;
-    border: 3px solid #FFF;
+    background: var(--accent);
+    border: 3px solid var(--white);
     box-shadow: 0 0 0 4px rgba(108, 66, 245, 0.15);
 }
 
@@ -600,69 +619,112 @@ button, a {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2px;
-
     text-align: center;
     white-space: nowrap;
     font-size: 14px;
-    color: #2d0c5a;
+    color: var(--text-deep);
 }
 
 .timeline-card strong {
     font-size: 18px;
     font-weight: 800;
-    color: #6C42F5;
+    color: var(--accent);
 }
 
 .timeline-card span {
-    color: #5a4f66;
+    color: var(--text-body);
     font-weight: 600;
 }
 
 .timeline-item.top    .timeline-card { bottom: calc(100% - 53px + 18px); }
 .timeline-item.bottom .timeline-card { top:    calc(107px + 18px);       }
 
-/* ----- Molduras ---------------------------------------------- */
-.molduras-grupo {
+/* ----- Carrossel Quadro Pontilhado (Quem Somos) -------------- */
+.carousel-dotted-container {
     position: relative;
     width: 100%;
-    max-width: 450px;
-    height: 380px;
+    max-width: 480px;
+    margin-inline: auto;
 }
 
-.wrapper-moldura {
-    position: absolute;
-    transition: transform 0.4s ease;
-}
-
-.moldura-esquerda {
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 320px;
-}
-
-.moldura-direita {
-    right: 0;
-    bottom: 0;
-    z-index: 2;
-    width: 270px;
-}
-
-.img-moldura {
-    display: block;
+.carousel-dotted {
+    position: relative;
     width: 100%;
-    height: auto;
-    filter: drop-shadow(0 15px 30px rgba(108, 66, 245, 0.08));
+    aspect-ratio: 4 / 3;
+    
+    /* O estilo do quadro pontilhado agora é o container principal */
+    background: var(--bg2);
+    border: 2.5px dashed var(--mint);
+    border-radius: 40px;
+    padding: 8px; /* Espaço entre a borda pontilhada e a foto */
+    box-shadow: var(--shadow-soft);
+    transform: rotate(-2deg); /* Leve inclinação charmosa */
+    transition: transform 0.4s var(--ease);
 }
 
-.wrapper-moldura:hover {
-    transform: scale(1.03) translateY(-3px);
-    z-index: 3;
+.carousel-dotted:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+.slides-dotted {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 30px; /* Bordas arredondadas para a foto dentro do quadro */
+}
+
+.slide-dotted {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s var(--ease), visibility 0.8s var(--ease);
+}
+
+.slide-dotted.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.slide-dotted img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Navegação do carrossel */
+.carousel-nav {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    z-index: 10;
+    display: flex;
+    gap: 10px;
+}
+
+.nav-prev, .nav-next {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: none;
+    background: var(--surface);
+    color: var(--purple-700);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background var(--ease), color var(--ease);
+    backdrop-filter: blur(4px);
+}
+
+.nav-prev:hover, .nav-next:hover {
+    background: var(--purple-700);
+    color: var(--white);
 }
 
 
@@ -713,35 +775,33 @@ button, a {
     margin-bottom: 12px;
     font-size: 20px;
     font-weight: 800;
-    color: #2d0c5a;
+    color: var(--text-deep);
 }
 
 .texto-card {
     font-size: 14.5px;
     line-height: 1.6;
-    color: #4c3c5c;
+    color: var(--text-card);
 }
 
 .lista-valores {
     padding: 0;
-    list-style: none;
 }
 
 .lista-valores li {
     position: relative;
     padding-left: 15px;
     margin-bottom: 8px;
-
     font-size: 14.5px;
     font-weight: 600;
-    color: #4c3c5c;
+    color: var(--text-card);
 }
 
 .lista-valores li::before {
     content: "•";
     position: absolute;
     left: 0;
-    color: #6c42f5;
+    color: var(--accent);
     font-weight: bold;
 }
 
@@ -751,6 +811,177 @@ button, a {
     bottom: 20px;
     font-size: 24px;
     opacity: 0.6;
+}
+
+/* =========================================================
+    ESTILOS - SEÇÃO ESPECIALIDADES (ZIG-ZAG)
+   ========================================================= */
+
+.especialidades-secao {
+    padding: 80px 20px;
+    background-color: var(--bg-main, #FAFCF9);
+}
+
+.container-especialidades {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.topo-secao {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 90px;
+}
+
+.especialidades-secao .subtitulo-secao {
+    margin-top: 24px;
+}
+
+.paragrafo-especialidades {
+    color: var(--text-muted, #5C677D);
+    font-size: 1rem;
+    margin-top: 60px;
+}
+
+/* Lista principal */
+.lista-especialidades {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+}
+
+/* Item Individual (Layout em Flexbox) */
+.item-especialidade {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+/* Inversão do layout para itens pares */
+.item-especialidade.invertido {
+    flex-direction: row-reverse;
+}
+
+/* Bloco da Mídia (Card com Degradê e Ilustração) */
+.midia-especialidade {
+    flex: 1;
+    position: relative;
+    max-width: 480px;
+}
+
+
+.card-ilustracao {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    padding: 8px;
+    overflow: hidden;
+
+    background: var(--bg2);
+    border: 2.5px dashed var(--mint);
+    border-radius: 40px;
+    box-shadow: var(--shadow-soft);
+
+    transform: rotate(-2deg);
+    transition: transform 0.4s var(--ease);
+}
+
+.card-ilustracao:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+/* Primeiro, terceiro e quinto quadros inclinados para a direita */
+.item-especialidade:nth-child(odd) .card-ilustracao {
+    transform: rotate(2deg);
+}
+
+/* Mantém o efeito hover dos quadros ímpares */
+.item-especialidade:nth-child(odd) .card-ilustracao:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+
+/* Bloco do Texto */
+.info-especialidade {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.categoria-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--accent, #2D6A4F);
+    margin-bottom: 10px;
+}
+
+.titulo-especialidade {
+    font-size: 1.8rem;
+    color: var(--text-deep, #1B4332);
+    margin-bottom: 16px;
+    font-weight: 800;
+}
+
+.info-especialidade p {
+    color: var(--text-color, #2B2D42);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin-bottom: 12px;
+}
+
+.especialidades-secao .link-acao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    padding: 10px 17px;
+    margin-top: 10px;
+
+    border: 1px solid rgba(139, 92, 246, 0.18);
+    border-radius: var(--radius-lg);
+
+    color: var(--purple-700);
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 6px 16px rgba(91, 33, 182, 0.10);
+
+    font-size: 0.84rem;
+    font-weight: 800;
+    text-decoration: none;
+
+    transition:
+        transform var(--ease),
+        box-shadow var(--ease),
+        background var(--ease),
+        color var(--ease);
+}
+
+.especialidades-secao .link-acao:hover {
+    color: var(--purple-700);
+    background: var(--white);
+    box-shadow: 0 9px 20px rgba(91, 33, 182, 0.16);
+    transform: translateY(-2px);
+}
+
+/* Responsividade Mobile */
+@media (max-width: 850px) {
+    .item-especialidade,
+    .item-especialidade.invertido {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .midia-especialidade {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .card-ilustracao {
+        height: 220px;
+    }
 }
 
 
@@ -776,24 +1007,20 @@ button, a {
     }
 
     .nav-links {
-        position: fixed;
+        position: absolute;
         top: calc(100% + 14px);
         left: 0;
         right: 0;
-
         width: 100%;
         padding: 18px;
-
         display: flex;
         flex-direction: column;
         align-items: stretch;
         gap: 8px;
-
         background: rgba(255, 255, 255, 0.96);
         border: 1px solid rgba(221, 214, 254, 0.8);
         border-radius: var(--radius-md);
         box-shadow: var(--shadow-soft);
-
         opacity: 0;
         visibility: hidden;
         transform: translateY(-8px);
@@ -863,18 +1090,33 @@ button, a {
         text-align: center;
     }
 
-    .molduras-grupo {
-        margin-top: 40px;
-        height: 340px;
-    }
-
     .grid-cards-conceito {
         grid-template-columns: 1fr;
+    }
+
+    .hero-carousel-area {
+        max-width: 400px;
+        margin-top: 40px;
+    }
+    .carousel-nav {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: -30px;
     }
 }
 
 /* ----- Mobile (≤ 640px) -------------------------------------- */
 @media (max-width: 640px) {
+
+    /* Timeline: preserva a legibilidade dos três marcos */
+    .timeline-container-full {
+        padding-bottom: 8px;
+    }
+
+    .timeline {
+        min-width: 640px;
+    }
+
 
     /* Navbar */
     .navbar {
@@ -923,5 +1165,9 @@ button, a {
     /* Carousel */
     .orbital-carousel {
         width: min(100%, 360px);
+    }
+
+    .hero-carousel-area {
+        max-width: 320px;
     }
 }
